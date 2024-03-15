@@ -22,7 +22,6 @@ class Solution {
         
         int min = Integer.MAX_VALUE;
         
-        // 노드 연결 끊기
         for (int[] wire : wires) {
             int node1 = wire[0];
             int node2 = wire[1];
