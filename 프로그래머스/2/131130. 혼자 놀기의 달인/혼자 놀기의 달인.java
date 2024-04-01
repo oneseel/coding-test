@@ -20,7 +20,7 @@ public class Solution {
             }
         }
         
-        group.sort(Comparator.reverseOrder());
+        group.sort((o1, o2) -> o2 - o1);
         
         if (group.size() < 2) {
             return 0;
