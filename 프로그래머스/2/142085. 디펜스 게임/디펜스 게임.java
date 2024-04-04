@@ -8,8 +8,8 @@ class Solution {
         for (int i = 0; i < enemy.length; i++) {
             n -= enemy[i];
             pq.offer(enemy[i]);
-
-        if (n < 0) {
+            
+            if (n < 0) {
                 if (k > 0 && !pq.isEmpty()) {
                     n += pq.poll();
                     k--;
