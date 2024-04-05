@@ -15,7 +15,6 @@ class Solution {
             }
         }
         list.add(1);
-        System.out.println(list);
         
         // 각 넓이 구하기
         List<Double> areaList = new ArrayList<>();
@@ -23,7 +22,6 @@ class Solution {
             double area = ((double) list.get(i) + (double) list.get(i + 1)) / 2.0;
             areaList.add(area);
         }
-        System.out.println(areaList);
         
         // 부분구간 정적분 값 구하기
         double[] answer = new double[ranges.length];
