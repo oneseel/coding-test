@@ -5,7 +5,7 @@ class Solution {
         int prev = 0;
         int count = 0;
         
-        // e를 기준으로 내림차순 정렬(같으면 s를 기준으로 오름차순)
+        // e를 기준으로 정렬(같으면 s를 기준으로 정렬)
         Arrays.sort(targets, (o1, o2) -> 
             (o1[1] == o2[1]) ? o1[0] - o2[0] : o1[1] - o2[1]
         );
