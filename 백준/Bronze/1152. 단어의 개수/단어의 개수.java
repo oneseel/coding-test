@@ -1,15 +1,10 @@
 import java.io.*;
+import java.util.*;
 
 class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
-        String s = br.readLine().trim();
-        if (s.isEmpty()) {
-            System.out.println(0);
-        } else {
-            String[] arr = s.split(" ");
-            System.out.println(arr.length);
-        }
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        System.out.println(st.countTokens());
     }
 }
