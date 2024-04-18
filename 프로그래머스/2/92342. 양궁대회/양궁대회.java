@@ -25,10 +25,11 @@ class Solution {
             }
             return;
         }
-        for (int j = 0; j <= 10 && ryan[j] <= apeach[j]; j++) {
-            ryan[j]++;
+        
+        for (int i = 0; i <= 10 && ryan[i] <= apeach[i]; i++) {
+            ryan[i]++;
             bt(apeach, count + 1, arrows);
-            ryan[j]--;
+            ryan[i]--;
         }
     }
 }
