@@ -5,12 +5,12 @@ class Solution {
 
     public int[] solution(int n, int[] info) {
         ryan = new int[11];
-        bt(info, 1, n);
+        bt(info, 0, n);
         return answer;
     }
 
     private void bt(int[] apeach, int count, int arrows) {
-        if (count == arrows + 1) {
+        if (count == arrows) {
             int apeachScore = 0;
             int ryanScore = 0;
             for (int i = 0; i <= 10; i++) {
