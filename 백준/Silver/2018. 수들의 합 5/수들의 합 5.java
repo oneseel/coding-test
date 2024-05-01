@@ -11,7 +11,7 @@ class Main {
             if (sum < n) sum += ++e;
             else if (sum > n) sum -= s++;
             else {
-                count++;
+                count++; 
                 sum -= s++;
             }
         }
