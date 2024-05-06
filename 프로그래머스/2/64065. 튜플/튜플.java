@@ -5,7 +5,7 @@ class Solution {
         String[] arr = s.replaceAll("[{}]", " ").trim().split(" , ");
         Arrays.sort(arr, (o1, o2) -> o1.length() - o2.length());
         
-        ArrayList<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         for (String a : arr) {
             for (String num : a.split(",")) {
                 int n = Integer.parseInt(num);
