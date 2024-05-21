@@ -4,12 +4,12 @@ class Solution {
     public int solution(String skill, String[] skill_trees) {
         int count = 0;
         for (String s : skill_trees) {
-            if (isVaild(skill, s)) count++;
+            if (isValid(skill, s)) count++;
         }
         return count;
     }
     
-    private static boolean isVaild(String skill, String s) {
+    private static boolean isValid(String skill, String s) {
         int idx = 0; // 스킬순서
         
         for(char c : s.toCharArray()) {
