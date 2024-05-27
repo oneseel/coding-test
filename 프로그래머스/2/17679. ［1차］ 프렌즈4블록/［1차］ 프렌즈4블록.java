@@ -32,8 +32,8 @@ class Solution {
             
             // 실제로 블록을 삭제('0')하고 위에 있는 블록을 떨어뜨린다.
             if (isDeleted) {
-                answer += deleteBlocks(m, n);
-                dropBlocks(m, n);
+                answer += deleteBlock(m, n);
+                dropBlock(m, n);
             }
             
         } while (isDeleted);
@@ -56,7 +56,7 @@ class Solution {
     }
     
     // 블록을 삭제하는 메서드 (삭제한 블록의 수를 센다)
-    private int deleteBlocks(int m, int n) {
+    private int deleteBlock(int m, int n) {
         int count = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -70,7 +70,7 @@ class Solution {
     }
     
     // 블록을 떨어뜨리는 메서드
-    private void dropBlocks(int m, int n) {
+    private void dropBlock(int m, int n) {
         for (int j = 0; j < n; j++) {
             for (int i = m - 1; i >= 0; i--) {
                 if (blocks[i][j] == '0') {
