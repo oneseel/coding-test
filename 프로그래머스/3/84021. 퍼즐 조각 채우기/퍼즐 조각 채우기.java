@@ -1,24 +1,24 @@
 import java.util.*;
 
 class Solution {
-    private static List<List<int[]>> shape1; // 테이블 모양
-    private static List<List<int[]>> shape2; // 게임 보드 모양
+    private static List<List<int[]>> tableShape; // 테이블 모양
+    private static List<List<int[]>> boardShape; // 게임 보드 모양
     private static int n;
 
     public int solution(int[][] game_board, int[][] table) {
         n = game_board.length; // 정사각형의 길이
-        boolean[][] visited1 = new boolean[n][n]; // table 방문 표시
-        boolean[][] visited2 = new boolean[n][n]; // game_board 방문 표시
-        shape1 = new ArrayList<>();
-        shape2 = new ArrayList<>();
+        boolean[][] tableVisited = new boolean[n][n]; // table 방문 표시
+        boolean[][] boardvistied = new boolean[n][n]; // game_board 방문 표시
+        tableShape = new ArrayList<>();
+        boardShape = new ArrayList<>();
 
         // 테이블에서 모양 찾기
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (table[i][j] == 1 && !visited1[i][j]) {
+                if (table[i][j] == 1 && !tableVisited[i][j]) {
                     List<int[]> shape = new ArrayList<>();
-                    bfs(i, j, table, visited1, 1, shape);
-                    shape1.add(normalizeShape(shape));
+                    bfs(i, j, table, tableVisited, 1, shape);
+                    tableShape.add(normalizeShape(shape));
                 }
             }
         }
@@ -26,35 +26,35 @@ class Solution {
         // 게임보드에서 빈 모양 찾기
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (game_board[i][j] == 0 && !visited2[i][j]) {
+                if (game_board[i][j] == 0 && !boardvistied[i][j]) {
                     List<int[]> shape = new ArrayList<>();
-                    bfs(i, j, game_board, visited2, 0, shape);
-                    shape2.add(normalizeShape(shape));
+                    bfs(i, j, game_board, boardvistied, 0, shape);
+                    boardShape.add(normalizeShape(shape));
                 }
             }
         }
 
         // 모양 비교
         int totalCount = 0;
-        for (List<int[]> shape : shape2) {
+        for (List<int[]> shape : boardShape) {
             boolean found = false;
-            for (int i = 0; i < shape1.size(); i++) {
-                if (matchShape(shape, shape1.get(i))) {
+            for (int i = 0; i < tableShape.size(); i++) {
+                if (matchShape(shape, tableShape.get(i))) {
                     totalCount += shape.size();
-                    shape1.remove(i);
+                    tableShape.remove(i);
                     found = true;
                     break;
                 }
             }
 
             if (!found) {
-                for (int i = 0; i < shape1.size(); i++) {
+                for (int i = 0; i < tableShape.size(); i++) {
                     List<int[]> rotatedShape = shape;
                     for (int r = 0; r < 3; r++) { // 최대 3번 회전
                         rotatedShape = rotate(rotatedShape);
-                        if (matchShape(rotatedShape, shape1.get(i))) {
+                        if (matchShape(rotatedShape, tableShape.get(i))) {
                             totalCount += shape.size();
-                            shape1.remove(i);
+                            tableShape.remove(i);
                             found = true;
                             break;
                         }
@@ -99,19 +99,19 @@ class Solution {
     }
 
     // 모양 일치 여부
-    private static boolean matchShape(List<int[]> shape1, List<int[]> shape2) {
-        if (shape1.size() != shape2.size()) {
+    private static boolean matchShape(List<int[]> tableShape, List<int[]> boardShape) {
+        if (tableShape.size() != boardShape.size()) {
             return false;
         }
-        Set<String> set1 = new HashSet<>();
-        Set<String> set2 = new HashSet<>();
-        for (int[] pos : shape1) {
-            set1.add(pos[0] + "," + pos[1]);
+        Set<String> tableSet = new HashSet<>();
+        Set<String> boardSet = new HashSet<>();
+        for (int[] pos : tableShape) {
+            tableSet.add(pos[0] + "," + pos[1]);
         }
-        for (int[] pos : shape2) {
-            set2.add(pos[0] + "," + pos[1]);
+        for (int[] pos : boardShape) {
+            boardSet.add(pos[0] + "," + pos[1]);
         }
-        return set1.equals(set2);
+        return tableSet.equals(boardSet);
     }
 
     // 회전
