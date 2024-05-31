@@ -1,15 +1,5 @@
 import java.util.*;
 
-class Route {
-    String start;
-    String end;
-    
-    public Route (String start, String end) {
-        this.start = start;
-        this.end = end;
-    }
-}
-
 class Solution {
     private static List<String> route; // 이동경로 리스트
     private static boolean[] visited; // 경로 방문 배열
