@@ -1,12 +1,10 @@
 import java.util.*;
 
 class Solution {
-    private static List<String> route; // 이동경로 리스트
     private static boolean[] visited; // 경로 방문 배열
     private static List<String> answer;
     
     public String[] solution(String[][] tickets) {
-        route = new ArrayList<>();
         answer = new ArrayList<>();
         visited = new boolean[tickets.length];
         
