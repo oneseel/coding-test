@@ -1,8 +1,8 @@
 import java.util.*;
 
 class Solution {
-    private static List<List<Integer>> list;
-    private static boolean[] visited;
+    private List<List<Integer>> list;
+    private boolean[] visited;
 
     public int solution(int n, int[][] computers) {
         list = new ArrayList<>();
@@ -33,7 +33,7 @@ class Solution {
         return count;
     }
 
-    private static void bfs(int start) {
+    private void bfs(int start) {
         Queue<Integer> queue = new LinkedList<>();
         visited[start] = true;
         queue.offer(start);
