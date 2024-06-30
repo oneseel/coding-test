@@ -7,13 +7,13 @@ class Solution {
         for (int i = 0; i < answer.length ; i++) {
             long num = begin + i;
 
-            for (long div = 2; div <= Math.sqrt(num); div++) {
-                if (num % div == 0) {
-                    if (num / div > 10000000){
-                        answer[i] = (int) div;
+            for (long j = 2; j <= Math.sqrt(num); j++) {
+                if (num % j == 0) {
+                    if (num / j > 10000000){
+                        answer[i] = (int) j;
                         continue;
                     } else{
-                        answer[i] = (int) (num / div);
+                        answer[i] = (int) (num / j);
                     }
                     break;
                 }
