@@ -1,56 +1,38 @@
-import java.util.*;
+import java.util.Stack;
 
 class Solution {
     public int solution(String s) {
-        int idx = 0; // 회전 수
         int count = 0;
-        String temp = s;
-
-        // 문자열 회전하기
-        while (idx < s.length()) {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 1; i< s.length(); i++) {
-                sb.append(temp.charAt(i));
-            }
-            sb.append(temp.charAt(0));
-            temp = sb.toString();
-            if (check(temp)) {
+        for (int i = 0; i < s.length(); i++) {
+            if (isValid(rotate(s))) {
                 count++;
             }
-            idx++;
+            s = rotate(s);
         }
-
         return count;
     }
 
-    private boolean check(String str) {
-        // 올바른 괄호인지 확인하기
-        Stack<Character> stack = new Stack<>();
+    // 문자열을 회전하는 메서드
+    private String rotate(String s) {
+        return s.substring(1) + s.charAt(0);
+    }
 
-        for (char c : str.toCharArray()) {
-            if (stack.isEmpty() || c == '(' || c == '[' || c == '{') {
+    // 올바른 괄호인지 확인하는 메서드
+    private boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '[' || c == '{') {
                 stack.push(c);
-            } else if (c == ')') {
-                if (stack.peek() == '(') {
-                    stack.pop();
-                } else {
-                    stack.push(c);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
                 }
-            } else if (c == '}') {
-                if (stack.peek() == '{') {
-                    stack.pop();
-                } else {
-                    stack.push(c);
-                }
-            } else if (c == ']') {
-                if (stack.peek() == '[') {
-                    stack.pop();
-                } else {
-                    stack.push(c);
+                char top = stack.pop();
+                if ((c == ')' && top != '(') || (c == ']' && top != '[') || (c == '}' && top != '{')) {
+                    return false;
                 }
             }
         }
-
         return stack.isEmpty();
     }
 }
