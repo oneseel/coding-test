@@ -3,19 +3,23 @@ import java.util.*;
 class Solution {
     public int solution(String s) {
         Stack<Character> stack = new Stack<>();
-        char[] charArr = s.toCharArray();
         
-        for (char c : charArr) {
-            if (stack.isEmpty()) {
-                stack.push(c);
-            } else {
+        for (char c : s.toCharArray()) {
+            if (!stack.isEmpty()) {
                 if (stack.peek() == c) {
-                    stack.pop();
+                stack.pop();
                 } else {
                     stack.push(c);
                 }
+            } else {
+                stack.push(c);
             }
         }
-        return stack.isEmpty() ? 1 : 0;
+        
+        if (stack.isEmpty()) {
+            return 1;
+        }
+
+        return 0;
     }
 }
