@@ -23,7 +23,7 @@ class Main {
         StringBuilder sb = new StringBuilder();
         
         for (Integer i : answer) {
-            sb.append(i + "");
+            sb.append(i);
         }
         
         System.out.println(sb.toString());
