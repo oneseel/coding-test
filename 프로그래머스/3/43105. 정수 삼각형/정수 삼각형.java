@@ -10,7 +10,7 @@ class Solution {
             dp[i][0] = dp[i - 1][0] + triangle[i][0];
             
             for (int j = 1; j <= i; j++) {
-                dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - 1]) + triangle[i][j];
+                dp[i][j] = Math.max(dp[i - 1][j] + triangle[i][j], dp[i - 1][j - 1] + triangle[i][j]);
             }
             
             dp[i][i] = dp[i - 1][i - 1] + triangle[i][i];
